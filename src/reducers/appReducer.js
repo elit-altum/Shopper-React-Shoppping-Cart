@@ -1,11 +1,35 @@
+import database from "../db/firebase";
+import { addProduct } from "../actions/firebaseActions";
+
 function appReducer(state, action) {
+	let newProducts = state.products;
+	let newCart = state.cart;
+
 	switch (action.type) {
+		// 1. ADDING NEW ITEM TO STORE
+		case "ADD_TO_STORE":
+			addProduct(action.product).then((id) => {
+				if (id !== -1) {
+					newProducts = state.products.concat([
+						{
+							id,
+							...action.product,
+						},
+					]);
+				}
+			});
+			return { products: newProducts };
+
+		// 2. ADDING NEW ITEM TO CART
 		case "ADD_TO_CART":
-			return { cart: state.card.append(action.item) };
-		case "decrement":
-			return { count: state.count - 1 };
+			break;
+
+		// 3. DEFAULT STATE
 		default:
-			throw new Error();
+			return {
+				products: newProducts,
+				cart: newCart,
+			};
 	}
 }
 

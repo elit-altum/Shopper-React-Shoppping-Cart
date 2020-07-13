@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useContext, useReducer } from "react";
 import logo from "./logo.svg";
+
+import appReducer from "./reducers/appReducer";
+
+import "./db/firebase";
 
 function App() {
 	return (
