@@ -1,7 +1,6 @@
-import database from "../db/firebase";
 import { addProduct } from "../actions/firebaseActions";
 
-function appReducer(state, action) {
+const appReducer = (state, action) => {
 	let newProducts = state.products;
 	let newCart = state.cart;
 
@@ -18,19 +17,43 @@ function appReducer(state, action) {
 					]);
 				}
 			});
-			return { products: newProducts };
+
+			return {
+				products: newProducts,
+			};
 
 		// 2. ADDING NEW ITEM TO CART
 		case "ADD_TO_CART":
-			break;
+			newCart = state.cart.concat([action.product]);
+			sessionStorage.setItem("cart", newCart);
 
-		// 3. DEFAULT STATE
+			return {
+				cart: newCart,
+			};
+
+		// 3. REMOVING ITEM FROM CART
+		case "REMOVE_FROM_CART":
+			newCart = state.cart.filter((item) => item.id !== action.product.id);
+			sessionStorage.setItem("cart", newCart);
+
+			return {
+				cart: newCart,
+			};
+
+		// 4. SET THE STATE
+		case "INIT":
+			return {
+				cart: action.cart || newCart,
+				products: action.products || newProducts,
+			};
+
+		// 5. DEFAULT STATE
 		default:
 			return {
 				products: newProducts,
 				cart: newCart,
 			};
 	}
-}
+};
 
 export default appReducer;

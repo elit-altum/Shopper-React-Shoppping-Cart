@@ -1,29 +1,55 @@
-import React, { useContext, useReducer } from "react";
-import logo from "./logo.svg";
+import React, { useReducer, useEffect, useState } from "react";
+import { Router, Switch, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 import appReducer from "./reducers/appReducer";
+import { getProducts } from "./actions/firebaseActions";
 
-import "./db/firebase";
+import AddProduct from "./components/addProduct";
 
-function App() {
+const history = createBrowserHistory();
+
+const initialState = { products: [], cart: [] };
+
+const StateContext = React.createContext({});
+
+const App = () => {
+	const [isRender, setIsRender] = useState(0);
+	const [state, dispatch] = useReducer(appReducer, initialState);
+
+	useEffect(() => {
+		const stateInitializer = async () => {
+			try {
+				const products = await getProducts();
+				const cart = sessionStorage.getItem("cart");
+				dispatch({
+					type: "INIT",
+					cart,
+					products,
+				});
+
+				setIsRender(1);
+			} catch {}
+		};
+
+		stateInitializer();
+	}, []);
+
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
+		<StateContext.Provider value={{ state, dispatch }}>
+			{isRender ? (
+				<Router history={history}>
+					<Switch>
+						<Route path="/" exact={true} />
+						<Route path="/cart" />
+						<Route path="/add" component={AddProduct} />
+					</Switch>
+				</Router>
+			) : (
+				<p>Loading</p>
+			)}
+		</StateContext.Provider>
 	);
-}
+};
 
-export default App;
+export { StateContext, App as default };

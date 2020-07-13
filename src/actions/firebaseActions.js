@@ -14,12 +14,12 @@ const addProduct = async (product) => {
 // 2. GET PRODUCTS FROM DB
 const getProducts = async () => {
 	try {
-		const snapshot = await database.ref("products").once();
+		const snapshot = await database.ref("products").once("value");
 
 		let products = [];
 		snapshot.forEach((product) => {
 			products.push({
-				id: product.id,
+				id: product.key,
 				...product.val(),
 			});
 		});
