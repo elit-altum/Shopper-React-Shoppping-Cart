@@ -4,7 +4,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: relative;
+	position: sticky;
+	top: 0;
+	z-index: 99;
+	background-color: #fff;
 
 	nav {
 		max-width: 600px;

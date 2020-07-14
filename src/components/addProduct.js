@@ -5,6 +5,8 @@ import { Form, Button } from "react-bootstrap";
 
 import { toast } from "react-toastify";
 
+import { history } from "../App";
+
 export default () => {
 	const { state, dispatch } = useContext(StateContext);
 	const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +32,10 @@ export default () => {
 		toast.success("Product added successfully!", {
 			autoClose: 2000,
 		});
+
+		setTimeout(() => {
+			window.location.href = "/";
+		}, 2000);
 	};
 
 	return (

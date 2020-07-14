@@ -5,6 +5,13 @@ import { StateContext } from "../App";
 
 export default () => {
 	const { state, dispatch } = useContext(StateContext);
+	const calculate = () => {
+		let items = 0;
+		state.cart.forEach((product) => {
+			items = items + product.qty;
+		});
+		return items;
+	};
 	return (
 		<header className="navigation-header">
 			<nav>
@@ -13,7 +20,7 @@ export default () => {
 						<Link to="/">Shop</Link>
 					</li>
 					<li>
-						<Link to="/cart">Cart ({state.cart.length})</Link>
+						<Link to="/cart">Cart ({calculate()})</Link>
 					</li>
 					<li>
 						<Link to="/sell">Sell</Link>

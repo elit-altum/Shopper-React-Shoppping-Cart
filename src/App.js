@@ -7,6 +7,8 @@ import { getProducts } from "./actions/firebaseActions";
 
 import AddProduct from "./components/AddProduct";
 import Header from "./components/Header";
+import Products from "./components/Products";
+import Cart from "./components/Cart";
 
 const history = createBrowserHistory();
 
@@ -22,7 +24,9 @@ const App = () => {
 		const stateInitializer = async () => {
 			try {
 				const products = await getProducts();
-				const cart = sessionStorage.getItem("cart");
+				const cartJSON = sessionStorage.getItem("cart");
+				const cart = JSON.parse(cartJSON);
+
 				dispatch({
 					type: "INIT",
 					cart,
@@ -42,8 +46,8 @@ const App = () => {
 				<Router history={history}>
 					<Header />
 					<Switch>
-						<Route path="/" exact={true} />
-						<Route path="/cart" />
+						<Route path="/" exact={true} component={Products} />
+						<Route path="/cart" component={Cart} />
 						<Route path="/sell" component={AddProduct} />
 					</Switch>
 				</Router>
