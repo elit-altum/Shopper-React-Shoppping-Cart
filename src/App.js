@@ -9,6 +9,7 @@ import AddProduct from "./components/AddProduct";
 import Header from "./components/Header";
 import Products from "./components/Products";
 import Cart from "./components/Cart";
+import Loader from "./components/Loader";
 
 const history = createBrowserHistory();
 
@@ -52,7 +53,7 @@ const App = () => {
 					</Switch>
 				</Router>
 			) : (
-				<p>Loading</p>
+				<Loader />
 			)}
 		</StateContext.Provider>
 	);

@@ -1,5 +1,6 @@
 $primary-color: #333;
 $secondary-color: #f2f2f2;
+$loader-color: #aaa;
 $primary-font: "sans-serif";
 
 * {
@@ -16,4 +17,12 @@ html {
 body {
 	background-color: $secondary-color;
 	overflow-x: hidden;
+}
+
+.spinner-wrapper {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
