@@ -15,12 +15,14 @@ const appReducer = (state, action) => {
 							...action.product,
 						},
 					]);
+					return {
+						products: newProducts,
+						cart: newCart,
+					};
 				}
 			});
 
-			return {
-				products: newProducts,
-			};
+			break;
 
 		// 2. ADDING NEW ITEM TO CART
 		case "ADD_TO_CART":
@@ -29,6 +31,7 @@ const appReducer = (state, action) => {
 
 			return {
 				cart: newCart,
+				products: newProducts,
 			};
 
 		// 3. REMOVING ITEM FROM CART
@@ -38,6 +41,7 @@ const appReducer = (state, action) => {
 
 			return {
 				cart: newCart,
+				products: newProducts,
 			};
 
 		// 4. SET THE STATE

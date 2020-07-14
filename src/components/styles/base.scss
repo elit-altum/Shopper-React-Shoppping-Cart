@@ -1,0 +1,19 @@
+$primary-color: #333;
+$secondary-color: #f2f2f2;
+$primary-font: "sans-serif";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100vw;
+	height: 100vh;
+}
+
+body {
+	background-color: $secondary-color;
+	overflow-x: hidden;
+}

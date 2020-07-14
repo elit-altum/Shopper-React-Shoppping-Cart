@@ -1,0 +1,32 @@
+.navigation-header {
+	width: 100vw;
+	height: 8vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+
+	nav {
+		max-width: 600px;
+		width: 600px;
+		margin-top: 1.3vh;
+		ul {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			list-style-type: none;
+			li {
+				a {
+					color: lighten($primary-color, 20%);
+					font-size: 1.2rem;
+					font-weight: 600;
+					transition: all 0.3s ease;
+					&:hover {
+						text-decoration: none;
+						color: #222;
+					}
+				}
+			}
+		}
+	}
+}

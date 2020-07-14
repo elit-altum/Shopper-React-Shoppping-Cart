@@ -4,9 +4,8 @@ import database from "../db/firebase";
 const addProduct = async (product) => {
 	try {
 		const newProduct = await database.ref("products").push(product);
-
 		return newProduct.key;
-	} catch {
+	} catch (e) {
 		return -1;
 	}
 };

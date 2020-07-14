@@ -5,7 +5,8 @@ import { createBrowserHistory } from "history";
 import appReducer from "./reducers/appReducer";
 import { getProducts } from "./actions/firebaseActions";
 
-import AddProduct from "./components/addProduct";
+import AddProduct from "./components/AddProduct";
+import Header from "./components/Header";
 
 const history = createBrowserHistory();
 
@@ -39,10 +40,11 @@ const App = () => {
 		<StateContext.Provider value={{ state, dispatch }}>
 			{isRender ? (
 				<Router history={history}>
+					<Header />
 					<Switch>
 						<Route path="/" exact={true} />
 						<Route path="/cart" />
-						<Route path="/add" component={AddProduct} />
+						<Route path="/sell" component={AddProduct} />
 					</Switch>
 				</Router>
 			) : (
@@ -52,4 +54,4 @@ const App = () => {
 	);
 };
 
-export { StateContext, App as default };
+export { StateContext, history, App as default };
