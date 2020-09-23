@@ -1,68 +1,48 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Shopper - React Based Cart Checkouts
 
-## Available Scripts
+A React + Firebase project for an online shopping cart module which allows users to add, remove or manipulate products in their cart.
 
-In the project directory, you can run:
+**Note**: This projects does not handle payments. It just provides live and reactive cart manipulation.
 
-### `yarn start`
+<p align="center">
+  <img src="https://img.shields.io/badge/frontend-React-blue?logo=react" />
+  <img src="https://img.shields.io/badge/styling-Bootstrap-purple?logo=Bootstrap" />
+  <img src="https://img.shields.io/badge/database-Firebase-yellow?logo=firebase" />
+</p>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+  <img src="./assets/cart_logo.png">
+</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## 01. Statement
 
-### `yarn test`
+Shopping carts have become the most fundamental system in place for every e-commerce application. Therefore, developers now need a simple yet reactive solution for engineering such a system and this project handles exactly that.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Reactive**: Shopper is extremely reactive to user inputs. Any changes made to the cart are immediately reflected across the module. Be it total cart items, amount to pay, price per item etc. Every change communicates seamlessly with the whole module to provide a more intuitive user experience.
+2. **Secure**: By default, Shopper stores cart data in the session storage. All cart data is kept securely in the user's computer only. Functionality can be extended for storing the data on firebase.
+3. **Un-opinionated Design**: The frontend has very minimal styling, built using [React-Bootstrap](https://react-bootstrap.github.io/) styling. Custom colors have been provided using SCSS variables for easier theming.
 
-### `yarn build`
+## 02. Setup
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. In the root of the project create a ```.env``` file for storing firebase secrets :
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+   ```env
+   REACT_APP_FIREBASE_API_KEY=
+   REACT_APP_FIREBASE_AUTH_DOMAIN=
+   REACT_APP_FIREBASE_DATABASE_URL=
+   REACT_APP_FIREBASE_STORAGE_BUCKET=
+   REACT_APP_FIREBASE_SENDER_ID=
+   REACT_APP_FIREBASE_APP_ID=
+   REACT_APP_FIREBASE_MEASUREMENT_ID=
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```
 
-### `yarn eject`
+2. Use the scripts for starting the live server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```sh
+     yarn start
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 03. Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+We would love to see what you bring to this project. Feel free to file issues, open pull requests etc. But please abide by the following [guidelines](./CONTRIBUTING.md)
